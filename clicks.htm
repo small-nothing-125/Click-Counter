@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mounjaro Click Counter</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 480px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 14px;
+        }
+        select {
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            appearance: none;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+            background-color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+<script defer data-domain="fuchsia-salli-38.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="fuchsia-salli-38.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><meta property="og:url" content="https://fuchsia-salli-38.tiiny.site/" data-id="th-modified" ><meta property="og:type" content="website" data-id="th-modified" ></head>
+<body>
+    <div class="container">
+        <script type="text/javascript" src="https://counter.websiteout.com/js/36/6/582/0"></script>
+        <h1>Mounjaro Click Counter</h1>
+        <img src="https://i.postimg.cc/zXN5QmSX/Kwikpen.png" alt="Mounjaro KwikPen" style="display: block; margin: 0 auto 20px auto; max-width: 100%;">
+        <p>This tool helps you calculate the effective Mounjaro dose for the multi-dose KwikPen® available on perscription in the UK.
+        <br><br>
+        Select your dose below, as labelled on your KwikPen. A full dose is delivered with 60 audible "clicks". Smaller doses can be selected by turning the KwikPen the corresponding number of clicks. <br><br>
+        This tool is for informational purposes only and not medical advice. All calculations are approximate, assuming linear dose distribution. Always consult your healthcare provider for proper dosing and administration of Mounjaro (tirzepatide).
+        </p>
+        <select id="doseSelect">
+            <option value="2.5">2.5mg</option>
+            <option value="5">5mg</option>
+            <option value="7.5">7.5mg</option>
+            <option value="10">10mg</option>
+            <option value="12.5">12.5mg</option>
+            <option value="15">15mg</option>
+        </select>
+        <table id="doseTable">
+            <thead>
+                <tr>
+                    <th>Clicks</th>
+                    <th>Effective Dose</th>
+                    <th>Dose (mL)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <img src="https://i.postimg.cc/zXN5QmSX/Kwikpen.png" alt="Mounjaro KwikPen" style="display: block; margin: 20px auto 0 auto; max-width: 100%;">
+    </div>
+
+    <script>
+        const doseSelect = document.getElementById('doseSelect');
+        const doseTable = document.getElementById('doseTable').getElementsByTagName('tbody')[0];
+
+        function updateDoseTable() {
+            const baseDose = parseFloat(doseSelect.value);
+            const maxClicks = 60;
+            doseTable.innerHTML = '';
+
+            for (let clicks = 5; clicks <= maxClicks; clicks += 5) {
+                const effectiveDose = (baseDose / 60) * clicks;
+                const doseInMl = (0.6 / 60) * clicks;
+
+                const row = doseTable.insertRow();
+                row.insertCell(0).textContent = clicks;
+                row.insertCell(1).textContent = effectiveDose.toFixed(3) + 'mg';
+                row.insertCell(2).textContent = doseInMl.toFixed(2);
+            }
+        }
+
+        doseSelect.addEventListener('change', updateDoseTable);
+        updateDoseTable();
+    </script>
+</body>
+</html>
